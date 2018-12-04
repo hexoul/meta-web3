@@ -6,15 +6,15 @@ var _ = require('underscore');
 class TopicRegistry {
 
   async init({web3, netid}) {
-    const { TOPIC_REGISTRY_ADDRESS } = getAddresses(netid);
+    this.addresses = getAddresses(netid);
 
     const topicRegistryAbi = await getABI(getBranch(netid), 'TopicRegistry');
-    this.topicRegistryInstance = new web3.eth.Contract(topicRegistryAbi.abi, TOPIC_REGISTRY_ADDRESS);
+    this.topicRegistryInstance = new web3.eth.Contract(topicRegistryAbi.abi, this.addresses.TOPIC_REGISTRY_ADDRESS);
   }
 
   async isRegistered(topicID) {
     // Validate ABI
-    if (! this.topicRegistryInstance.methods.isRegistered) return;
+    if (! this.topicRegistryInstance || ! this.topicRegistryInstance.methods.isRegistered) return;
 
     // Call
     return this.topicRegistryInstance.methods.isRegistered(topicID).call();
@@ -22,7 +22,7 @@ class TopicRegistry {
 
   async getTopic(topicID) {
     // Validate ABI
-    if (! this.topicRegistryInstance.methods.getTopic) return;
+    if (! this.topicRegistryInstance || ! this.topicRegistryInstance.methods.getTopic) return;
 
     // Call
     return this.topicRegistryInstance.methods.getTopic(topicID).call();
@@ -30,7 +30,7 @@ class TopicRegistry {
 
   async getTotal() {
     // Validate ABI
-    if (! this.topicRegistryInstance.methods.getTotal) return;
+    if (! this.topicRegistryInstance || ! this.topicRegistryInstance.methods.getTotal) return;
 
     // Call
     return this.topicRegistryInstance.methods.getTotal().call();
@@ -57,10 +57,14 @@ class TopicRegistry {
    */
   registerTopic(title, explanation) {
     // Validate ABI
-    if (! this.topicRegistryInstance.methods.registerTopic) return;
+    if (! this.topicRegistryInstance || ! this.topicRegistryInstance.methods.registerTopic) return;
 
     // Return transaction param
-    return this.topicRegistryInstance.methods.registerTopic(title, explanation).send.request();
+    return {
+      request: this.topicRegistryInstance.methods.registerTopic(title, explanation).send.request(),
+      to: this.addresses.TOPIC_REGISTRY_ADDRESS,
+      data: this.topicRegistryInstance.methods.registerTopic(title, explanation).encodeABI(),
+    };
   }
 }
 

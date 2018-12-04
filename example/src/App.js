@@ -21,8 +21,9 @@ export default class App extends Component {
       web3: web3,
       identity: web3config.identity,
     }).then(async () => {
+      // All contracts are initialized
       this.topicTotal = await contracts.topicRegistry.getTotal();
-      this.setState({initDone: true});
+      this.setState({ initDone: true });
     });
   }
 
