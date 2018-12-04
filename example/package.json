@@ -1,0 +1,20 @@
+{
+  "name": "meta-web3-example",
+  "homepage": "https://hexoul.github.io/meta-web3",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "meta-web3": "file:..",
+    "prop-types": "^15.5.4",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "^1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
