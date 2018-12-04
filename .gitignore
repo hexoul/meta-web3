@@ -3,3 +3,4 @@ node_modules
 build
 package-lock.json
 example/package-lock.json
+example/src/web3-config.json
