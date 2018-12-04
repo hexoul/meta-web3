@@ -1,10 +1,11 @@
 import { Identity } from './Identity.contract';
+import { TopicRegistry } from './TopicRegistry.contract';
 import { getContractsAddresses } from '../addresses';
 
 const contracts = {
     identity: new Identity(),
     // identityManager: new IdentityManager(),
-    // topicRegistry: new TopicRegistry(),
+    topicRegistry: new TopicRegistry(),
     // achievementManager: new AchievementManager(),
     // aaRegistry: new AttestationAgencyRegistry(),
 };
@@ -16,11 +17,10 @@ async function initContracts(arg) {
         return;
     }
 
-    return getContractsAddresses().then(() => {
-        Object.values(contracts).map(async (contract) => { await contract.init(arg) });
-    });
+    return getContractsAddresses().then(() => Promise.all(Object.values(contracts).map(async (contract) => { await contract.init(arg) })));
 }
 
 export {
+    contracts,
     initContracts
 }

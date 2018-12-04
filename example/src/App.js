@@ -7,15 +7,22 @@ import Web3 from 'web3';
 import web3config from './web3-config.json';
 
 // Contracts
-import { initContracts } from 'meta-web3';
+import { contracts, initContracts } from 'meta-web3';
 
 export default class App extends Component {
 
+  state = {
+    initDone: false,
+  };
+
   async init() {
     const web3 = new Web3(new Web3.providers.HttpProvider(web3config.url));
-    await initContracts({
+    initContracts({
       web3: web3,
       identity: web3config.identity,
+    }).then(async () => {
+      this.topicTotal = await contracts.topicRegistry.getTotal();
+      this.setState({initDone: true});
     });
   }
 
@@ -26,7 +33,9 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        Not implemented
+        {this.state.initDone &&
+          this.topicTotal
+        }
       </div>
     )
   }
