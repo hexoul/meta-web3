@@ -21,7 +21,27 @@ npm install --save meta-web3
 ```jsx
 import React, { Component } from 'react';
 
-class Example extends Component {  
+// Web3
+import Web3 from 'web3';
+import web3config from './web3-config.json';
+
+// Contracts
+import { initContracts } from 'meta-web3';
+
+class Example extends Component {
+
+  async init() {
+    const web3 = new Web3(new Web3.providers.HttpProvider(web3config.url));
+    await initContracts({
+      web3: web3,
+      identity: web3config.identity,
+    });
+  }
+
+  componentWillMount() {
+    this.init();
+  }
+
   render () {
     return (
       <div>

@@ -16,8 +16,9 @@ async function initContracts(arg) {
         return;
     }
 
-    await getContractsAddresses();
-    return Promise.all(Object.values(contracts).map(async (contract) => { await contract.init(arg) }));
+    return getContractsAddresses().then(() => {
+        Object.values(contracts).map(async (contract) => { await contract.init(arg) });
+    });
 }
 
 export {
