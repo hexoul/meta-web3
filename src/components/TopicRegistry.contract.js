@@ -7,9 +7,9 @@ class TopicRegistry {
 
   async init({web3, netid}) {
     this.addresses = getAddresses(netid);
-
+    const { TOPIC_REGISTRY_ADDRESS } = this.addresses;
     const topicRegistryAbi = await getABI(getBranch(netid), 'TopicRegistry');
-    this.topicRegistryInstance = new web3.eth.Contract(topicRegistryAbi.abi, this.addresses.TOPIC_REGISTRY_ADDRESS);
+    this.topicRegistryInstance = new web3.eth.Contract(topicRegistryAbi.abi, TOPIC_REGISTRY_ADDRESS);
   }
 
   async isRegistered(topicID) {

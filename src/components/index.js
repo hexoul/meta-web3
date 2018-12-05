@@ -1,10 +1,11 @@
 import { Identity } from './Identity.contract';
+import { IdentityManager } from './IdentityManager.contract';
 import { TopicRegistry } from './TopicRegistry.contract';
 import { getContractsAddresses } from '../addresses';
 
 const contracts = {
     identity: new Identity(),
-    // identityManager: new IdentityManager(),
+    identityManager: new IdentityManager(),
     topicRegistry: new TopicRegistry(),
     // achievementManager: new AchievementManager(),
     // aaRegistry: new AttestationAgencyRegistry(),
@@ -22,5 +23,8 @@ async function initContracts(arg) {
 
 export {
     contracts,
-    initContracts
+    initContracts,
+    Identity,
+    IdentityManager,
+    TopicRegistry
 }
