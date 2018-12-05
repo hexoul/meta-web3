@@ -12,10 +12,11 @@ npm i meta-web3
 
 ## Components
 
+1. AttestationAgencyRegistry
 1. Identity
-2. IdentityManager
-3. TopicRegistry
-4. AchievementManager
+1. IdentityManager
+1. TopicRegistry
+1. AchievementManager
 
 ## Usage
 
@@ -27,7 +28,7 @@ import Web3 from 'web3';
 import web3config from './web3-config.json';
 
 // Contracts
-import { contracts, initContracts } from 'meta-web3';
+import { contracts, getContractsAddresses, initContracts, TopicRegistry } from 'meta-web3';
 
 class Example extends Component {
 
@@ -69,7 +70,7 @@ class Example extends Component {
     return (
       <div>
         {this.state.initDone &&
-          Object.keys(this.result).map(k => k + ': ' + this.result[k])
+          Object.keys(this.result).map(k => <p>{k + ': ' + this.result[k]}</p>)
         }
       </div>
     )

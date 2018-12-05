@@ -38,6 +38,7 @@ class TopicRegistry {
 
   async getAllTopic({handler, cb}) {
     if (! handler || ! cb) return;
+    if (! this.topicRegistryInstance) return;
 
     // Search topics with the range from zero to total
     let total = await this.getTotal();
