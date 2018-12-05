@@ -48,6 +48,19 @@ class Example extends Component {
     });
   }
 
+  async initDirectly() {
+    // If you want to initialize each contract directly
+    getContractsAddresses().then(async () => {
+      let topicRegistry = new TopicRegistry();
+      topicRegistry.init({
+        web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
+      }).then(async () => {
+        let total = await topicRegistry.getTotal();
+        console.log('total', total);
+      });
+    });
+  }
+
   componentWillMount() {
     this.init();
   }
