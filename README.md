@@ -7,14 +7,14 @@
 ## Install
 
 ```bash
-npm install --save meta-web3
+npm i meta-web3
 ```
 
 ## Components
 
-1. User
-2. Topic
-2. Achievement
+1. Identity
+2. TopicRegistry
+3. AchievementManager
 
 ## Usage
 
@@ -26,7 +26,7 @@ import Web3 from 'web3';
 import web3config from './web3-config.json';
 
 // Contracts
-import { initContracts } from 'meta-web3';
+import { contracts, initContracts } from 'meta-web3';
 
 class Example extends Component {
 
@@ -35,13 +35,14 @@ class Example extends Component {
   };
 
   async init() {
-    const web3 = new Web3(new Web3.providers.HttpProvider(web3config.url));
     initContracts({
-      web3: web3,
+      web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
       identity: web3config.identity,
     }).then(async () => {
       // All contracts are initialized
-      this.topicTotal = await contracts.topicRegistry.getTotal();
+      this.result = {
+        getTotal: await contracts.topicRegistry.getTotal(),
+      };
       this.setState({ initDone: true });
     });
   }
@@ -54,7 +55,7 @@ class Example extends Component {
     return (
       <div>
         {this.state.initDone &&
-          this.topicTotal
+          Object.keys(this.result).map(k => k + ': ' + this.result[k])
         }
       </div>
     )

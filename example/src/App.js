@@ -16,13 +16,14 @@ export default class App extends Component {
   };
 
   async init() {
-    const web3 = new Web3(new Web3.providers.HttpProvider(web3config.url));
     initContracts({
-      web3: web3,
+      web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
       identity: web3config.identity,
     }).then(async () => {
       // All contracts are initialized
-      this.topicTotal = await contracts.topicRegistry.getTotal();
+      this.result = {
+        getTotal: await contracts.topicRegistry.getTotal(),
+      };
       this.setState({ initDone: true });
     });
   }
@@ -35,7 +36,7 @@ export default class App extends Component {
     return (
       <div>
         {this.state.initDone &&
-          this.topicTotal
+          Object.keys(this.result).map(k => k + ': ' + this.result[k])
         }
       </div>
     )
