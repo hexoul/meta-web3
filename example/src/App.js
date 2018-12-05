@@ -7,7 +7,7 @@ import Web3 from 'web3';
 import web3config from './web3-config.json';
 
 // Contracts
-import { contracts, initContracts } from 'meta-web3';
+import { contracts, getContractsAddresses, initContracts, TopicRegistry } from 'meta-web3';
 
 export default class App extends Component {
 
@@ -25,6 +25,19 @@ export default class App extends Component {
         getTotal: await contracts.topicRegistry.getTotal(),
       };
       this.setState({ initDone: true });
+    });
+  }
+
+  async initDirectly() {
+    // If you want to initialize each contract directly
+    getContractsAddresses().then(async () => {
+      let topicRegistry = new TopicRegistry();
+      topicRegistry.init({
+        web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
+      }).then(async () => {
+        let total = await topicRegistry.getTotal();
+        console.log('total', total);
+      });
     });
   }
 

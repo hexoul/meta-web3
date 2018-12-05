@@ -13,8 +13,9 @@ npm i meta-web3
 ## Components
 
 1. Identity
-2. TopicRegistry
-3. AchievementManager
+2. IdentityManager
+3. TopicRegistry
+4. AchievementManager
 
 ## Usage
 
@@ -71,6 +72,13 @@ npm start
 cd example
 npm start
 ```
+
+## Reference
+- [ERC721 spec.](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md)
+- [ERC725 spec.](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-725.md)
+- [ERC735 spec.](https://github.com/ethereum/EIPs/issues/735)
+- [ERC725-735 imp.](https://github.com/mirceapasoi/erc725-735)
+- [OpenZeppelin imp.](https://github.com/OpenZeppelin/openzeppelin-solidity)
 
 ## Thanks to
 [create-react-library](https://www.npmjs.com/package/create-react-library)
