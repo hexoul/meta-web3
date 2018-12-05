@@ -1,15 +1,17 @@
+import { getContractsAddresses } from '../addresses';
+
+import { AchievementManager } from './AchievementManager.contract';
 import { AttestationAgencyRegistry } from './AttestationAgencyRegistry.contract';
 import { Identity } from './Identity.contract';
 import { IdentityManager } from './IdentityManager.contract';
 import { TopicRegistry } from './TopicRegistry.contract';
-import { getContractsAddresses } from '../addresses';
 
 const contracts = {
+    achievementManager: new AchievementManager(),
     aaRegistry: new AttestationAgencyRegistry(),
     identity: new Identity(),
     identityManager: new IdentityManager(),
     topicRegistry: new TopicRegistry(),
-    // achievementManager: new AchievementManager(),
 };
 
 async function initContracts(arg) {
@@ -26,6 +28,7 @@ export {
     contracts,
     getContractsAddresses,
     initContracts,
+    AchievementManager,
     AttestationAgencyRegistry,
     Identity,
     IdentityManager,

@@ -22,6 +22,7 @@ export default class App extends Component {
     }).then(async () => {
       // All contracts are initialized
       this.result = {
+        getLengthOfAchievements: await contracts.achievementManager.getLengthOfAchievements(),
         getAttestationAgencyNum: await contracts.aaRegistry.getAttestationAgencyNum(),
         getTotal: await contracts.topicRegistry.getTotal(),
       };
@@ -50,7 +51,7 @@ export default class App extends Component {
     return (
       <div>
         {this.state.initDone &&
-          Object.keys(this.result).map(k => <p>{k + ': ' + this.result[k]}</p>)
+          Object.keys(this.result).map(k => <p key={k}>{k + ': ' + this.result[k]}</p>)
         }
       </div>
     )
