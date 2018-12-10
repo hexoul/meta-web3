@@ -5,7 +5,7 @@ var _ = require('underscore');
 
 class AchievementManager {
 
-  async init({web3, netid}) {
+  async init({ web3, netid }) {
     this.addresses = getAddresses(netid);
     const { ACHIEVEMENT_MANAGER_ADDRESS } = this.addresses;
     this.achievementManagerAbi = await getABI(getBranch(netid), 'AchievementManager');
@@ -36,7 +36,7 @@ class AchievementManager {
     return this.achievementManagerInstance.methods.getLengthOfAchievements().call();
   }
 
-  async getAllAchievements({handler, cb}) {
+  async getAllAchievements({ handler, cb }) {
     if (! handler || ! cb) return;
 
     // Validate ABI
@@ -51,7 +51,7 @@ class AchievementManager {
     })).then(() => cb());
   }
 
-  async getAllAchievementsByLength({handler, cb}) {
+  async getAllAchievementsByLength({ handler, cb }) {
     if (! handler || ! cb) return;
 
     // Validate ABI

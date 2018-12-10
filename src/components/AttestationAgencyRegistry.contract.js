@@ -5,7 +5,7 @@ var _ = require('underscore');
 
 class AttestationAgencyRegistry {
 
-  async init({web3, netid}) {
+  async init({ web3, netid }) {
     this.addresses = getAddresses(netid);
     const { ATTESTATION_AGENCY_REGISTRY_ADDRESS } = this.addresses;
     this.aaRegistryAbi = await getABI(getBranch(netid), 'AttestationAgencyRegistry');
@@ -36,7 +36,7 @@ class AttestationAgencyRegistry {
     return this.aaRegistryInstance.methods.getAttestationAgencySingle(idx).call();
   }
 
-  async getAllAttestationAgencies({handler, cb}) {
+  async getAllAttestationAgencies({ handler, cb }) {
     if (! handler || ! cb) return;
     if (! this.aaRegistryInstance) return;
 

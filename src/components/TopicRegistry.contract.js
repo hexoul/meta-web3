@@ -5,7 +5,7 @@ var _ = require('underscore');
 
 class TopicRegistry {
 
-  async init({web3, netid}) {
+  async init({ web3, netid }) {
     this.addresses = getAddresses(netid);
     const { TOPIC_REGISTRY_ADDRESS } = this.addresses;
     const topicRegistryAbi = await getABI(getBranch(netid), 'TopicRegistry');
@@ -36,7 +36,7 @@ class TopicRegistry {
     return this.topicRegistryInstance.methods.getTotal().call();
   }
 
-  async getAllTopic({handler, cb}) {
+  async getAllTopic({ handler, cb }) {
     if (! handler || ! cb) return;
     if (! this.topicRegistryInstance) return;
 

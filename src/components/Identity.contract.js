@@ -4,7 +4,7 @@ const eutil = require('ethereumjs-util');
 
 class Identity {
 
-  async init({web3, netid, identity, privkey}) {
+  async init({ web3, netid, identity, privkey }) {
     this.identity = identity;
     this.privkey = privkey;
     this.identityAbi = await getABI(getBranch(netid), 'Identity');

@@ -3,7 +3,7 @@ import { getBranch, getABI } from '../helpers';
 
 class IdentityManager {
 
-  async init({web3, netid}) {
+  async init({ web3, netid }) {
     this.addresses = getAddresses(netid);
     const { IDENTITY_MANAGER_ADDRESS } = this.addresses;
     this.identityManagerAbi = await getABI(getBranch(netid), 'IdentityManager');
