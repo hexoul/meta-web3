@@ -19,6 +19,7 @@ export default class App extends Component {
     initContracts({
       web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
       identity: web3config.identity,
+      privkey: web3config.privkey,
     }).then(async () => {
       // All contracts are initialized
       this.result = {
