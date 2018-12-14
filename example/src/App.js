@@ -1,52 +1,51 @@
-import 'babel-polyfill';
+import 'babel-polyfill'
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 // Web3
-import Web3 from 'web3';
-import web3config from './web3-config.json';
+import Web3 from 'web3'
+import web3config from './web3-config.json'
 
 // Contracts
-import { contracts, getContractsAddresses, initContracts, TopicRegistry } from 'meta-web3';
+import { contracts, getContractsAddresses, initContracts, TopicRegistry } from 'meta-web3'
 
 export default class App extends Component {
-
   state = {
-    initDone: false,
+    initDone: false
   };
 
-  async init() {
+  async init () {
     initContracts({
       web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
       netid: web3config.netid,
       identity: web3config.identity,
-      privkey: web3config.privkey,
+      privkey: web3config.privkey
     }).then(async () => {
       // All contracts are initialized
       this.result = {
         getLengthOfAchievements: await contracts.achievementManager.getLengthOfAchievements(),
         getAttestationAgencyNum: await contracts.aaRegistry.getAttestationAgencyNum(),
-        getTotal: await contracts.topicRegistry.getTotal(),
-      };
-      this.setState({ initDone: true });
-    });
+        getTotal: await contracts.topicRegistry.getTotal()
+      }
+      this.setState({ initDone: true })
+    })
   }
 
-  async initDirectly() {
+  async initDirectly () {
     // If you want to initialize each contract directly
     getContractsAddresses().then(async () => {
-      let topicRegistry = new TopicRegistry();
+      let topicRegistry = new TopicRegistry()
       topicRegistry.init({
-        web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
+        web3: new Web3(new Web3.providers.HttpProvider(web3config.url))
       }).then(async () => {
-        let total = await topicRegistry.getTotal();
-        console.log('total', total);
-      });
-    });
+        let total = await topicRegistry.getTotal()
+        console.log('total', total)
+      })
+    })
   }
 
-  componentWillMount() {
-    this.init();
+  componentWillMount () {
+    this.init()
   }
 
   render () {
