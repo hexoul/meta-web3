@@ -40,7 +40,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.4",
-    "eslint": "^5.4.0",
+    "eslint": "^5.10.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-react": "^6.0.0",
     "eslint-plugin-import": "^2.13.0",
@@ -70,6 +70,6 @@
     "https": "^1.0.0",
     "node-fetch": "^2.3.0",
     "underscore": "^1.9.1",
-    "web3": "^1.0.0-beta.36"
+    "web3": "^1.0.0-beta.37"
   }
 }
