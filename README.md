@@ -1,8 +1,10 @@
 # meta-web3
 
-> Web3 wrapper for ERC721, 725 and 735
+[![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hexoul/meta-web3/master/LICENSE)
+[![NPM](https://img.shields.io/npm/v/meta-web3.svg)](https://www.npmjs.com/package/meta-web3)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-[![NPM](https://img.shields.io/npm/v/meta-web3.svg)](https://www.npmjs.com/package/meta-web3) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+> Web3 wrapper for ERC721, 725 and 735
 
 ## Install
 
@@ -83,6 +85,7 @@ class Example extends Component {
 ```
 
 ## Test
+
 ```
 cd meta-web3
 npm start
@@ -97,10 +100,3 @@ npm start
 - [ERC735 spec.](https://github.com/ethereum/EIPs/issues/735)
 - [ERC725-735 imp.](https://github.com/mirceapasoi/erc725-735)
 - [OpenZeppelin imp.](https://github.com/OpenZeppelin/openzeppelin-solidity)
-
-## Thanks to
-[create-react-library](https://www.npmjs.com/package/create-react-library)
-
-## License
-
-MIT © [hexoul](https://github.com/hexoul)
