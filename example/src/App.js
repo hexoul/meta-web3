@@ -22,10 +22,11 @@ export default class App extends Component {
       identity: web3config.identity,
       privkey: web3config.privkey
     }).then(async () => {
-      let ballotStorageTest, envStorageTest, governanceTest
+      let ballotStorageTest, envStorageTest, governanceTest, stakingTest
       await contracts.ballotStorage.getBallotMember(1).then(ret => ballotStorageTest = ret.newMemberAddress)
       envStorageTest = await contracts.envStorage.getStakingMin()
       governanceTest = await contracts.governance.getBallotLength()
+      stakingTest = await contracts.staking.balanceOf(ballotStorageTest)
       // All contracts are initialized
       this.result = {
         // getLengthOfAchievements: await contracts.achievementManager.getLengthOfAchievements(),
@@ -33,8 +34,8 @@ export default class App extends Component {
         // getTotal: await contracts.topicRegistry.getTotal()\
         ballotStorage: ballotStorageTest,
         envStarge: envStorageTest,
-        governance: governanceTest
-
+        governance: governanceTest,
+        stakging: stakingTest
       }
       this.setState({ initDone: true })
     })

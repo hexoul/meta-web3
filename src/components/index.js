@@ -64,5 +64,6 @@ export {
   TopicRegistry,
   BallotStorage,
   EnvStorage,
-  Governance
+  Governance,
+  Staking
 }

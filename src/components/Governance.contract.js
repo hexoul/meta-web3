@@ -83,12 +83,6 @@ class Governance {
       data: this.govInstance.methods.addProposalToRemoveMember(member, lockAmount, memo).encodeABI()
     }
   }
-
-  // test
-  async getMinVotingDuration () {
-    if (!this.govInstance || !this.govInstance.methods) return
-    return this.govInstance.methods.getMinVotingDuration().call()
-  }
 }
 
 export { Governance }
