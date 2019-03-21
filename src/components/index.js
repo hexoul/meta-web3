@@ -62,5 +62,6 @@ export {
   Identity,
   IdentityManager,
   TopicRegistry,
-  BallotStorage
+  BallotStorage,
+  EnvStorage
 }
