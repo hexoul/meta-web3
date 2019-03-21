@@ -25,14 +25,14 @@ constants.branch = {
 constants.NETWORK = {
   '11': {
     NAME: 'MAINNET',
-    RPC: 'https://api.metadium.com/dev',
+    RPC: 'https://api.metadium.com/prod',
     BRANCH: constants.branch.MAINNET,
     TESTNET: false,
     EXPLORER: 'https://explorer.metadium.com'
   },
   '12': {
     NAME: 'TESTNET',
-    RPC: 'https://api.metadium.com/prod',
+    RPC: 'https://api.metadium.com/dev',
     BRANCH: constants.branch.TESTNET,
     TESTNET: true,
     EXPLORER: 'https://testnetexplorer.metadium.com'
