@@ -14,11 +14,16 @@ npm i meta-web3
 
 ## Components
 
+1. Registry
 1. AttestationAgencyRegistry
 1. Identity
 1. IdentityManager
 1. TopicRegistry
 1. AchievementManager
+1. BallotStorage
+1. EnvStorage
+1. Governance
+1. Staking
 
 ## Usage
 

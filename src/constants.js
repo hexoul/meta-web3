@@ -3,12 +3,18 @@ constants.organization = 'hexoul'
 constants.repoName = 'poa-chain-spec'
 constants.addressesSourceFile = 'contracts.json'
 constants.ABIsSources = {
+  Registry: 'Registry.json',
   Identity: 'Identity.json',
   IdentityManager: 'IdentityManager.json',
   AttestationAgencyRegistry: 'AttestationAgencyRegistry.json',
   TopicRegistry: 'TopicRegistry.json',
   Achievement: 'Achievement.json',
-  AchievementManager: 'AchievementManager.json'
+  AchievementManager: 'AchievementManager.json',
+  Staking: 'Staking.json',
+  EnvStorage: 'EnvStorageImp.json',
+  BallotStorage: 'BallotStorage.json',
+  Gov: 'Gov.json',
+  GovImp: 'GovImp.json'
 }
 
 constants.branch = {
