@@ -28,7 +28,7 @@ class Governance {
    * @param {uint256} idx
    * @param {boolean} approval
    */
-  async vote (idx, approval) {
+  vote (idx, approval) {
     if (!this.govInstance || !this.govInstance.methods) return
     return {
       to: this.addresses.GOV_ADDRESS,
@@ -45,7 +45,7 @@ class Governance {
    * @param {uint256[2]} [port, lockAmount]
    * @param {bytes} memo
    */
-  async addProposalToAddMember (member, name, enode, ip, [port, lockAmount], memo) {
+  addProposalToAddMember (member, name, enode, ip, [port, lockAmount], memo) {
     if (!this.govInstance || !this.govInstance.methods) return
     return {
       to: this.addresses.GOV_ADDRESS,
@@ -62,7 +62,7 @@ class Governance {
    * @param {uint} [nPort, ockAmount]
    * @param {bytes} memo
    */
-  async addProposalToChangeMember ([target, nMember], nName, nEnode, nIp, [nPort, lockAmount], memo) {
+  addProposalToChangeMember ([target, nMember], nName, nEnode, nIp, [nPort, lockAmount], memo) {
     if (!this.govInstance || !this.govInstance.methods) return
     return {
       to: this.addresses.GOV_ADDRESS,
@@ -76,7 +76,7 @@ class Governance {
    * @param {uint256} lockAmount
    * @param {bytes} memo
    */
-  async addProposalToRemoveMember (member, lockAmount, memo) {
+  addProposalToRemoveMember (member, lockAmount, memo) {
     if (!this.govInstance || !this.govInstance.methods) return
     return {
       to: this.addresses.GOV_ADDRESS,

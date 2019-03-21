@@ -33,9 +33,8 @@ class BallotStorage {
      * @param {uint256} id
      * @param {uint256} duration
      */
-  async updateBallotDuration (id, duration) {
+  updateBallotDuration (id, duration) {
     if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
-    if (duration === 0) duration = await this.getMinVotingDuration()
 
     return {
       to: this.addresses.BALLOT_STORAGE_ADDRESS,
@@ -47,7 +46,7 @@ class BallotStorage {
      * @param {unit256} id
      * @param {bytes} memo
      */
-  async updateBallotMemo (id, memo) {
+  updateBallotMemo (id, memo) {
     if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
     return {
       to: this.addresses.BALLOT_STORAGE_ADDRESS,
@@ -55,7 +54,7 @@ class BallotStorage {
     }
   }
 
-  async finalizeBallot (id, ballotState) {
+  finalizeBallot (id, ballotState) {
     if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
     return {
       to: this.addresses.BALLOT_STORAGE_ADDRESS,
@@ -63,7 +62,7 @@ class BallotStorage {
     }
   }
 
-  async cancelBallot (id) {
+  cancelBallot (id) {
     if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
     return {
       to: this.addresses.BALLOT_STORAGE_ADDRESS,
