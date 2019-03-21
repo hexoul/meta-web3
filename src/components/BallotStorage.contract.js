@@ -71,4 +71,5 @@ class BallotStorage {
     }
   }
 }
+
 export { BallotStorage }
