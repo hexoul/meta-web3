@@ -16,16 +16,20 @@ export default class App extends Component {
 
   async init () {
     initContracts({
-      web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
+      //web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
+      web3: new Web3(window.ethereum),
       branch: constants.branch.TESTNET,
       identity: web3config.identity,
       privkey: web3config.privkey
     }).then(async () => {
+      let ballotStorageTest
+      await contracts.ballotStorage.getBallotMember(1).then(ret => ballotStorageTest = ret.newMemberAddress)
       // All contracts are initialized
       this.result = {
         // getLengthOfAchievements: await contracts.achievementManager.getLengthOfAchievements(),
         // getAttestationAgencyNum: await contracts.aaRegistry.getAttestationAgencyNum(),
-        // getTotal: await contracts.topicRegistry.getTotal()
+        // getTotal: await contracts.topicRegistry.getTotal()\
+        ballotStorage: ballotStorageTest
       }
       this.setState({ initDone: true })
     })
