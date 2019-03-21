@@ -61,5 +61,9 @@ export {
   AttestationAgencyRegistry,
   Identity,
   IdentityManager,
-  TopicRegistry
+  TopicRegistry,
+  BallotStorage,
+  EnvStorage,
+  Governance,
+  Staking
 }
