@@ -47,7 +47,7 @@ class BallotStorage {
      * @param {unit256} id
      * @param {bytes} memo
      */
-    async updateBallotMemo (id, memo) {
+  async updateBallotMemo (id, memo) {
     if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
     return {
       to: this.addresses.BALLOT_STORAGE_ADDRESS,
