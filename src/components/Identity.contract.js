@@ -1,12 +1,13 @@
-import { getBranch, getABI } from '../helpers'
+import { getABI } from '../helpers'
 
 const eutil = require('ethereumjs-util')
 
 class Identity {
-  async init ({ web3, netid, identity, privkey }) {
+  async init ({ web3, branch, identity, privkey }) {
+    if ((identity || privkey) == null) return
     this.identity = identity
     this.privkey = privkey
-    this.identityAbi = await getABI(getBranch(netid), 'Identity')
+    this.identityAbi = await getABI(branch, 'Identity')
     this.identityInstance = new web3.eth.Contract(this.identityAbi.abi, this.identity)
   }
 

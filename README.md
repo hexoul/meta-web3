@@ -4,7 +4,7 @@
 [![NPM](https://img.shields.io/npm/v/meta-web3.svg)](https://www.npmjs.com/package/meta-web3)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-> Web3 wrapper for ERC721, 725 and 735
+> Web3 wrapper for ERC721, 725, 735 and governance
 
 ## Install
 
@@ -23,14 +23,14 @@ npm i meta-web3
 ## Usage
 
 ```jsx
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 // Web3
 import Web3 from 'web3';
-import web3config from './web3-config.json';
+import web3config from './web3-config.json'
 
 // Contracts
-import { contracts, getContractsAddresses, initContracts, TopicRegistry } from 'meta-web3';
+import { constants, contracts, getContractsAddresses, initContracts, TopicRegistry } from 'meta-web3'
 
 class Example extends Component {
 
@@ -41,7 +41,7 @@ class Example extends Component {
   async init() {
     initContracts({
       web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
-      netid: web3config.netid,
+      branch: constants.branch.TESTNET,
       identity: web3config.identity,
       privkey: web3config.privkey,
     }).then(async () => {
@@ -51,19 +51,19 @@ class Example extends Component {
         getAttestationAgencyNum: await contracts.aaRegistry.getAttestationAgencyNum(),
         getTotal: await contracts.topicRegistry.getTotal(),
       };
-      this.setState({ initDone: true });
+      this.setState({ initDone: true })
     });
   }
 
   async initDirectly() {
     // If you want to initialize each contract directly
     getContractsAddresses().then(async () => {
-      let topicRegistry = new TopicRegistry();
+      let topicRegistry = new TopicRegistry()
       topicRegistry.init({
         web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
       }).then(async () => {
-        let total = await topicRegistry.getTotal();
-        console.log('total', total);
+        let total = await topicRegistry.getTotal()
+        console.log('total', total)
       });
     });
   }

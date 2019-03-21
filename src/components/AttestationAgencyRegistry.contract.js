@@ -1,13 +1,13 @@
 import { getAddresses } from '../addresses'
-import { getBranch, getABI } from '../helpers'
+import { getABI } from '../helpers'
 
 var _ = require('underscore')
 
 class AttestationAgencyRegistry {
-  async init ({ web3, netid }) {
-    this.addresses = getAddresses(netid)
+  async init ({ web3, branch }) {
+    this.addresses = getAddresses()
     const { ATTESTATION_AGENCY_REGISTRY_ADDRESS } = this.addresses
-    this.aaRegistryAbi = await getABI(getBranch(netid), 'AttestationAgencyRegistry')
+    this.aaRegistryAbi = await getABI(branch, 'AttestationAgencyRegistry')
     this.aaRegistryInstance = new web3.eth.Contract(this.aaRegistryAbi.abi, ATTESTATION_AGENCY_REGISTRY_ADDRESS)
   }
 

@@ -7,7 +7,7 @@ import Web3 from 'web3'
 import web3config from './web3-config.json'
 
 // Contracts
-import { contracts, getContractsAddresses, initContracts, TopicRegistry } from 'meta-web3'
+import { constants, contracts, getContractsAddresses, initContracts, TopicRegistry } from 'meta-web3'
 
 export default class App extends Component {
   state = {
@@ -17,15 +17,15 @@ export default class App extends Component {
   async init () {
     initContracts({
       web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
-      netid: web3config.netid,
+      branch: constants.branch.TESTNET,
       identity: web3config.identity,
       privkey: web3config.privkey
     }).then(async () => {
       // All contracts are initialized
       this.result = {
-        getLengthOfAchievements: await contracts.achievementManager.getLengthOfAchievements(),
-        getAttestationAgencyNum: await contracts.aaRegistry.getAttestationAgencyNum(),
-        getTotal: await contracts.topicRegistry.getTotal()
+        // getLengthOfAchievements: await contracts.achievementManager.getLengthOfAchievements(),
+        // getAttestationAgencyNum: await contracts.aaRegistry.getAttestationAgencyNum(),
+        // getTotal: await contracts.topicRegistry.getTotal()
       }
       this.setState({ initDone: true })
     })

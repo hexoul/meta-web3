@@ -15,18 +15,20 @@ const contracts = {
 }
 
 async function initContracts (arg) {
-  const { web3, netid } = arg
+  const { web3, branch } = arg
   if (!web3 || !web3.eth) {
-    console.log('web3 NEEDED')
+    console.log('web3 NOT FOUND')
     return
   }
 
-  return getContractsAddresses(netid).then(() => Promise.all(Object.values(contracts).map(async (contract) => { await contract.init(arg) })))
+  return getContractsAddresses(branch).then(() =>
+    Promise.all(Object.values(contracts).map(async (contract) => {
+      await contract.init(arg)
+    })))
 }
 
 export {
   contracts,
-  getContractsAddresses,
   initContracts,
   AchievementManager,
   AttestationAgencyRegistry,

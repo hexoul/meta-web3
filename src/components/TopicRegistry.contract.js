@@ -1,13 +1,13 @@
 import { getAddresses } from '../addresses'
-import { getBranch, getABI } from '../helpers'
+import { getABI } from '../helpers'
 
 var _ = require('underscore')
 
 class TopicRegistry {
-  async init ({ web3, netid }) {
-    this.addresses = getAddresses(netid)
+  async init ({ web3, branch }) {
+    this.addresses = getAddresses()
     const { TOPIC_REGISTRY_ADDRESS } = this.addresses
-    const topicRegistryAbi = await getABI(getBranch(netid), 'TopicRegistry')
+    const topicRegistryAbi = await getABI(branch, 'TopicRegistry')
     this.topicRegistryInstance = new web3.eth.Contract(topicRegistryAbi.abi, TOPIC_REGISTRY_ADDRESS)
   }
 

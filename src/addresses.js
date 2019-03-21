@@ -1,12 +1,10 @@
-import { constants } from './constants'
-import { addressesURL, getBranch } from './helpers'
+import { addressesURL } from './helpers'
 
 const fetch = require('node-fetch')
 
-let TESTNET_ADDRESSES = {}
+let ADDRESSES = {}
 
-async function getContractsAddresses (netId) {
-  let branch = getBranch(netId)
+async function getContractsAddresses (branch) {
   let addr = addressesURL(branch)
   let response
   try {
@@ -15,26 +13,14 @@ async function getContractsAddresses (netId) {
     return
   }
 
-  let contracts = await response.json()
+  const contracts = await response.json()
   console.log('contracts', contracts)
-
-  switch (branch) {
-    case 'testnet':
-      TESTNET_ADDRESSES = contracts
-      break
-    default:
-      TESTNET_ADDRESSES = contracts
-      break
-  }
+  ADDRESSES = contracts
+  return contracts
 }
 
-function getAddresses (netId) {
-  switch (netId) {
-    case constants.NETID_TESTNET:
-      return TESTNET_ADDRESSES
-    default:
-      return TESTNET_ADDRESSES
-  }
+function getAddresses () {
+  return ADDRESSES
 }
 
 export {

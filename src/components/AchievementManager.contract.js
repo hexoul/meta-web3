@@ -1,13 +1,13 @@
 import { getAddresses } from '../addresses'
-import { getBranch, getABI } from '../helpers'
+import { getABI } from '../helpers'
 
 var _ = require('underscore')
 
 class AchievementManager {
-  async init ({ web3, netid }) {
-    this.addresses = getAddresses(netid)
+  async init ({ web3, branch }) {
+    this.addresses = getAddresses()
     const { ACHIEVEMENT_MANAGER_ADDRESS } = this.addresses
-    this.achievementManagerAbi = await getABI(getBranch(netid), 'AchievementManager')
+    this.achievementManagerAbi = await getABI(branch, 'AchievementManager')
     this.achievementManagerInstance = new web3.eth.Contract(this.achievementManagerAbi.abi, ACHIEVEMENT_MANAGER_ADDRESS)
   }
 

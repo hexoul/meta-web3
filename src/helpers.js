@@ -21,18 +21,8 @@ function getABI (branch, contract) {
   return fetch(addr).then(response => response.json())
 }
 
-function getBranch (netId) {
-  switch (netId) {
-    case constants.NETID_TESTNET:
-      return 'testnet'
-    default:
-      return 'testnet'
-  }
-}
-
 export {
   addressesURL,
   ABIURL,
-  getABI,
-  getBranch
+  getABI
 }
