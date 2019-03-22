@@ -38,40 +38,40 @@ export default class App extends Component {
         getBallotMemberNewMemberAddress: (await contracts.ballotStorage.getBallotMember(1)).newMemberAddress,
         getMinVotingDuration: await contracts.ballotStorage.getMinVotingDuration(),
         getMaxVotingDuration: await contracts.ballotStorage.getMaxVotingDuration(),
-        updateBallotDurationData: (await contracts.ballotStorage.updateBallotDuration(1, 86400)).data,
-        updateBallotMemoData: (await contracts.ballotStorage.updateBallotMemo(1, '0x54657374')).data,
-        cancelBallotData: (await contracts.ballotStorage.cancelBallot(1)).data,
+        updateBallotDurationData: contracts.ballotStorage.updateBallotDuration(1, 86400).data,
+        updateBallotMemoData: contracts.ballotStorage.updateBallotMemo(1, '0x54657374').data,
+        cancelBallotData: contracts.ballotStorage.cancelBallot(1).data,
         getStakingMin: await contracts.envStorage.getStakingMin(),
         getStakingMax: await contracts.envStorage.getStakingMax(),
         getBallotLength: await contracts.governance.getBallotLength(),
         isMember: await contracts.governance.isMember('0xC03B19F95D409c26b64B44292827a26989D2E8d0'),
-        voteData: (await contracts.governance.vote(1, true)).to,
-        addProposalToAddMemberData: (await contracts.governance.addProposalToAddMember(
+        voteData: contracts.governance.vote(1, true).data,
+        addProposalToAddMemberData: contracts.governance.addProposalToAddMember(
           testProposal.addr,
           testProposal.textToHex,
           testProposal.node,
           testProposal.ip,
           [testProposal.port, testProposal.amount],
           testProposal.textToHex
-        )).data,
-        addProposalToChangeMemberData: (await contracts.governance.addProposalToChangeMember(
+        ).data,
+        addProposalToChangeMemberData: contracts.governance.addProposalToChangeMember(
           [testProposal.addr, testProposal.addr],
           testProposal.textToHex,
           testProposal.node,
           testProposal.ip,
           [testProposal.port, testProposal.amount],
           testProposal.textToHex
-        )).data,
-        addProposalToRemoveMemberData: (await contracts.governance.addProposalToRemoveMember(
+        ).data,
+        addProposalToRemoveMemberData: contracts.governance.addProposalToRemoveMember(
           testProposal.addr,
           testProposal.amount,
           testProposal.textToHex
-        )).data,
+        ).data,
         lockedBalanceOf: await contracts.staking.lockedBalanceOf('0xC03B19F95D409c26b64B44292827a26989D2E8d0'),
         balanceOf: await contracts.staking.balanceOf('0xC03B19F95D409c26b64B44292827a26989D2E8d0'),
         availableBalanceOf: await contracts.staking.availableBalanceOf('0xC03B19F95D409c26b64B44292827a26989D2E8d0'),
-        depositData: (await contracts.staking.deposit()).data,
-        withdrawData: (await contracts.staking.withdraw('1')).data
+        depositData: contracts.staking.deposit().data,
+        withdrawData: contracts.staking.withdraw('1').data
       }
       this.setState({ initDone: true })
     })
