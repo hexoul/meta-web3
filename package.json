@@ -1,6 +1,6 @@
 {
   "name": "meta-web3",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Web3 wrapper for ERC721, 725, 735 and governance",
   "author": "hexoul",
   "license": "MIT",

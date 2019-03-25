@@ -7,7 +7,8 @@ import Web3 from 'web3'
 import web3config from './web3-config.json'
 
 // Contracts
-import { constants, contracts, getContractsAddresses, initContracts, TopicRegistry } from 'meta-web3'
+import { constants, contracts, getContractsAddresses,
+  initContracts, initContractsByNames, TopicRegistry } from 'meta-web3'
 
 export default class App extends Component {
   state = {
@@ -88,6 +89,14 @@ export default class App extends Component {
         console.log('total', total)
       })
     })
+  }
+
+  async initByNames () {
+    initContractsByNames({
+      web3: new Web3(new Web3.providers.HttpProvider(web3config.url)),
+      branch: constants.branch.TESTNET,
+      names: ['staking']
+    }).then(() => console.log(contracts))
   }
 
   componentWillMount () {

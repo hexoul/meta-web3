@@ -49,7 +49,7 @@ async function initContractsByNames (arg) {
 
   return getContractsAddresses(branch).then(() =>
     Promise.all(Object.keys(contracts).map(async (name) => {
-      if (name in names) await contracts[name].init(arg)
+      if (names.includes(name)) await contracts[name].init(arg)
     })))
 }
 
