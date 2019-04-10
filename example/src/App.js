@@ -30,6 +30,7 @@ export default class App extends Component {
         port: 30303,
         amount: '1'
       }
+      console.log(await contracts.ballotStorage.getVote(1))
       // All contracts are initialized
       this.result = {
         // getLengthOfAchievements: await contracts.achievementManager.getLengthOfAchievements(),
@@ -39,12 +40,15 @@ export default class App extends Component {
         getBallotMemberNewMemberAddress: (await contracts.ballotStorage.getBallotMember(1)).newMemberAddress,
         getMinVotingDuration: await contracts.ballotStorage.getMinVotingDuration(),
         getMaxVotingDuration: await contracts.ballotStorage.getMaxVotingDuration(),
+        getVote: (await contracts.ballotStorage.getVote(1)).ballotId,
         updateBallotDurationData: contracts.ballotStorage.updateBallotDuration(1, 86400).data,
         updateBallotMemoData: contracts.ballotStorage.updateBallotMemo(1, '0x54657374').data,
         cancelBallotData: contracts.ballotStorage.cancelBallot(1).data,
         getStakingMin: await contracts.envStorage.getStakingMin(),
         getStakingMax: await contracts.envStorage.getStakingMax(),
         getBallotLength: await contracts.governance.getBallotLength(),
+        getModifiedBlock: await contracts.governance.getModifiedBlock(),
+        getVoteLength: await contracts.governance.getVoteLength(),
         isMember: await contracts.governance.isMember('0xC03B19F95D409c26b64B44292827a26989D2E8d0'),
         voteData: contracts.governance.vote(1, true).data,
         addProposalToAddMemberData: contracts.governance.addProposalToAddMember(
