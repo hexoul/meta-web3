@@ -14,6 +14,16 @@ class Governance {
     return this.govInstance.methods.ballotLength().call()
   }
 
+  async getModifiedBlock () {
+    if (!this.govInstance || !this.govInstance.methods) return
+    return this.govInstance.methods.modifiedBlock().call()
+  }
+
+  async getVoteLength () {
+    if (!this.govInstance || !this.govInstance.methods) return
+    return this.govInstance.methods.voteLength.call()
+  }
+
   /**
    *
    * @param {address} addr
