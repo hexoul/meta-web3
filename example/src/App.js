@@ -30,7 +30,6 @@ export default class App extends Component {
         port: 30303,
         amount: '1'
       }
-      console.log(await contracts.ballotStorage.getVote(1))
       // All contracts are initialized
       this.result = {
         // getLengthOfAchievements: await contracts.achievementManager.getLengthOfAchievements(),
