@@ -10,27 +10,27 @@ class BallotStorage {
   }
 
   async getBallotBasic (id) {
-    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
+    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods.getBallotBasic) return
     return this.ballotStorageInstance.methods.getBallotBasic(id).call()
   }
 
   async getBallotMember (id) {
-    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
+    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods.getBallotMember) return
     return this.ballotStorageInstance.methods.getBallotMember(id).call()
   }
 
   async getMinVotingDuration () {
-    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
+    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods.getMinVotingDuration) return
     return this.ballotStorageInstance.methods.getMinVotingDuration().call()
   }
 
   async getMaxVotingDuration () {
-    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
+    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods.getMaxVotingDuration) return
     return this.ballotStorageInstance.methods.getMaxVotingDuration().call()
   }
 
   async getVote (id) {
-    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
+    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods.getVote) return
     return this.ballotStorageInstance.methods.getVote(id).call()
   }
 
@@ -39,7 +39,7 @@ class BallotStorage {
      * @param {uint256} duration
      */
   updateBallotDuration (id, duration) {
-    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
+    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods.updateBallotDuration) return
 
     return {
       to: this.addresses.BALLOT_STORAGE_ADDRESS,
@@ -52,7 +52,7 @@ class BallotStorage {
      * @param {bytes} memo
      */
   updateBallotMemo (id, memo) {
-    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
+    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods.updateBallotMemo) return
     return {
       to: this.addresses.BALLOT_STORAGE_ADDRESS,
       data: this.ballotStorageInstance.methods.updateBallotMemo(id, memo).encodeABI()
@@ -60,7 +60,7 @@ class BallotStorage {
   }
 
   finalizeBallot (id, ballotState) {
-    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
+    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods.finalizeBallot) return
     return {
       to: this.addresses.BALLOT_STORAGE_ADDRESS,
       data: this.ballotStorageInstance.methods.finalizeBallot(id, ballotState).encodeABI()
@@ -68,7 +68,7 @@ class BallotStorage {
   }
 
   cancelBallot (id) {
-    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
+    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods.cancelBallot) return
     return {
       to: this.addresses.BALLOT_STORAGE_ADDRESS,
       data: this.ballotStorageInstance.methods.cancelBallot(id).encodeABI()

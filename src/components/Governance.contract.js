@@ -10,17 +10,17 @@ class Governance {
   }
 
   async getBallotLength () {
-    if (!this.govInstance || !this.govInstance.methods) return
+    if (!this.govInstance || !this.govInstance.methods.ballotLength) return
     return this.govInstance.methods.ballotLength().call()
   }
 
   async getModifiedBlock () {
-    if (!this.govInstance || !this.govInstance.methods) return
+    if (!this.govInstance || !this.govInstance.methods.modifiedBlock) return
     return this.govInstance.methods.modifiedBlock().call()
   }
 
   async getVoteLength () {
-    if (!this.govInstance || !this.govInstance.methods) return
+    if (!this.govInstance || !this.govInstance.methods.voteLength) return
     return this.govInstance.methods.voteLength.call()
   }
 
@@ -29,7 +29,7 @@ class Governance {
    * @param {address} addr
    */
   async isMember (addr) {
-    if (!this.govInstance || !this.govInstance.methods) return
+    if (!this.govInstance || !this.govInstance.methods.isMember) return
     return this.govInstance.methods.isMember(addr).call()
   }
 
@@ -39,7 +39,7 @@ class Governance {
    * @param {boolean} approval
    */
   vote (idx, approval) {
-    if (!this.govInstance || !this.govInstance.methods) return
+    if (!this.govInstance || !this.govInstance.methods.vote) return
     return {
       to: this.addresses.GOV_ADDRESS,
       data: this.govInstance.methods.vote(idx, approval).encodeABI()
@@ -56,7 +56,7 @@ class Governance {
    * @param {bytes} memo
    */
   addProposalToAddMember (member, name, enode, ip, [port, lockAmount], memo) {
-    if (!this.govInstance || !this.govInstance.methods) return
+    if (!this.govInstance || !this.govInstance.methods.addProposalToAddMember) return
     return {
       to: this.addresses.GOV_ADDRESS,
       data: this.govInstance.methods.addProposalToAddMember(member, name, enode, ip, [port, lockAmount], memo).encodeABI()
@@ -73,7 +73,7 @@ class Governance {
    * @param {bytes} memo
    */
   addProposalToChangeMember ([target, nMember], nName, nEnode, nIp, [nPort, lockAmount], memo) {
-    if (!this.govInstance || !this.govInstance.methods) return
+    if (!this.govInstance || !this.govInstance.methods.addProposalToChangeMember) return
     return {
       to: this.addresses.GOV_ADDRESS,
       data: this.govInstance.methods.addProposalToChangeMember([target, nMember], nName, nEnode, nIp, [nPort, lockAmount], memo).encodeABI()
@@ -87,7 +87,7 @@ class Governance {
    * @param {bytes} memo
    */
   addProposalToRemoveMember (member, lockAmount, memo) {
-    if (!this.govInstance || !this.govInstance.methods) return
+    if (!this.govInstance || !this.govInstance.methods.addProposalToRemoveMember) return
     return {
       to: this.addresses.GOV_ADDRESS,
       data: this.govInstance.methods.addProposalToRemoveMember(member, lockAmount, memo).encodeABI()

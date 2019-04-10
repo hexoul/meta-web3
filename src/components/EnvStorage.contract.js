@@ -10,12 +10,12 @@ class EnvStorage {
   }
 
   async getStakingMin () {
-    if (!this.envStorageInstance || !this.envStorageInstance.methods) return
+    if (!this.envStorageInstance || !this.envStorageInstance.methods.getStakingMin) return
     return this.envStorageInstance.methods.getStakingMin().call()
   }
 
   async getStakingMax () {
-    if (!this.envStorageInstance || !this.envStorageInstance.methods) return
+    if (!this.envStorageInstance || !this.envStorageInstance.methods.getStakingMax) return
     return this.envStorageInstance.methods.getStakingMax().call()
   }
 }

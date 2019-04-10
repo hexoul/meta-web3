@@ -5,6 +5,7 @@ var _ = require('underscore')
 
 class AchievementManager {
   async init ({ web3, branch }) {
+    this.web3 = web3
     this.addresses = getAddresses()
     const { ACHIEVEMENT_MANAGER_ADDRESS } = this.addresses
     this.achievementManagerAbi = await getABI(branch, 'AchievementManager')
@@ -79,6 +80,7 @@ class AchievementManager {
     // Validate ABI
     if (!this.achievementManagerInstance || !this.achievementManagerInstance.methods.createAchievement) return
 
+    if (typeof reward === 'string') reward = this.web3.utils.toWei(reward, 'ether')
     // Return transaction param
     return {
       request: this.achievementManagerInstance.methods.createAchievement(topics, issuers, title, explanation, reward, uri).send.request(),
@@ -97,6 +99,7 @@ class AchievementManager {
     // Validate ABI
     if (!this.achievementManagerInstance || !this.achievementManagerInstance.methods.updateAchievement) return
 
+    if (typeof reward === 'string') reward = this.web3.utils.toWei(reward, 'ether')
     // Return transaction param
     return {
       request: this.achievementManagerInstance.methods.updateAchievement(id, reward).send.request(),
@@ -115,6 +118,7 @@ class AchievementManager {
     // Validate ABI
     if (!this.achievementManagerInstance || !this.achievementManagerInstance.methods.fundAchievement) return
 
+    if (typeof reserve === 'string') reserve = this.web3.utils.toWei(reserve, 'ether')
     // Return transaction param
     return {
       request: this.achievementManagerInstance.methods.fundAchievement(id).send.request(),

@@ -74,7 +74,7 @@ export default class App extends Component {
         lockedBalanceOf: await contracts.staking.lockedBalanceOf('0xC03B19F95D409c26b64B44292827a26989D2E8d0'),
         balanceOf: await contracts.staking.balanceOf('0xC03B19F95D409c26b64B44292827a26989D2E8d0'),
         availableBalanceOf: await contracts.staking.availableBalanceOf('0xC03B19F95D409c26b64B44292827a26989D2E8d0'),
-        depositData: contracts.staking.deposit().data,
+        depositData: contracts.staking.deposit('1').data,
         withdrawData: contracts.staking.withdraw('1').data
       }
       this.setState({ initDone: true })
