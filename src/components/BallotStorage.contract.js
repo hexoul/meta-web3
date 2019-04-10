@@ -29,6 +29,11 @@ class BallotStorage {
     return this.ballotStorageInstance.methods.getMaxVotingDuration().call()
   }
 
+  async getVote () {
+    if (!this.ballotStorageInstance || !this.ballotStorageInstance.methods) return
+    return this.ballotStorageInstance.methods.getVote(this.data.voteLength).call()
+  }
+
   /**
      * @param {uint256} id
      * @param {uint256} duration
